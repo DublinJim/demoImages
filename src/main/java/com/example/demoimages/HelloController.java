@@ -21,6 +21,20 @@ public class HelloController implements Initializable {
         imageView = new ImageView(image);
         imageView.fitHeightProperty().bind(rootPane.heightProperty());
         imageView.fitWidthProperty().bind(rootPane.widthProperty());
+        imageView.preserveRatioProperty();
+
+       /* rootPane.setMaxSize(800, 800);
+        rootPane.setMinSize(400, 400);
+*/
+        rootPane.setMaxHeight(1000);
+        rootPane.setMaxWidth(1000);
+
+
+        rootPane.setMinWidth(200);
+        rootPane.setMinHeight(200);
+
         rootPane.getChildren().add(imageView);
     }
+
+
 }
