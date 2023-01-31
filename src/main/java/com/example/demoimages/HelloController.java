@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
-private  String clickSound = "src/main/resources/FreeOfficeSFX_MouseSingleClick.wav";
+    private final String clickSound = "src/main/resources/FreeOfficeSFX_MouseSingleClick.wav";
     public ImageView imageView;
     public Image image;
     public AnchorPane rootPane;
@@ -39,25 +39,30 @@ private  String clickSound = "src/main/resources/FreeOfficeSFX_MouseSingleClick.
 
 
         rootPane.getChildren().add(imageView);
+        String imageInView = imageView.getImage().toString();
 
         Button btn1 = new Button("Boing!");
-        Font font = Font.font("Baskerville", FontWeight.BOLD, 18);
+        Font font = Font.font("Yu Gothic Light", FontWeight.BOLD, 18);
         btn1.setFont(font);
-        btn1.setPadding(new Insets(10,10,10,10));
+        btn1.setPadding(new Insets(10, 10, 10, 10));
 
         rootPane.getChildren().add(btn1);
+
+
         imageName = "fullbin.jpg";
         Image imageBin = new Image(imageName);
 
         btn1.setOnAction(actionEvent -> {
 
-            imageView.setImage(imageBin);
 
+            imageView.setImage(imageBin);
             playClick(clickSound);
 
         });
 
     }
 
-
 }
+
+
+
