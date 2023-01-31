@@ -14,16 +14,18 @@ import javafx.scene.text.FontWeight;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
-    private ComboBox<String> comboBox = new ComboBox<>();
+
     private final String clickSound = "src/main/resources/FreeOfficeSFX_MouseSingleClick.wav";
     public ImageView imageView;
     public Image image;
     public AnchorPane rootPane;
     public GetAllFonts getAllFonts = new GetAllFonts();
     private String imageName;
+    private ArrayList<String> allFontsArray = new ArrayList<>();
 
     private static void playClick(String soundFile) {
         Media soundClick = new Media(new File(soundFile).toURI().toString());
@@ -41,8 +43,14 @@ public class HelloController implements Initializable {
         imageView.fitWidthProperty().bind(rootPane.widthProperty());
         imageView.preserveRatioProperty();
         getAllFonts.getList();
+        allFontsArray = getAllFonts.getFontArray();
+        ComboBox<String> comboBox = new ComboBox<>();
+
+        comboBox.getItems().addAll(allFontsArray);
+
 
         rootPane.getChildren().add(imageView);
+        rootPane.getChildren().add(comboBox);
         String imageInView = imageView.getImage().toString();
 
         Button btn1 = new Button("Boing!");
