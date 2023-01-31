@@ -20,12 +20,14 @@ public class HelloController implements Initializable {
     public ImageView imageView;
     public Image image;
     public AnchorPane rootPane;
+    public GetAllFonts getAllFonts = new GetAllFonts();
     private String imageName;
 
     private static void playClick(String soundFile) {
         Media soundClick = new Media(new File(soundFile).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(soundClick);
         mediaPlayer.play();
+
     }
 
     @Override
@@ -36,7 +38,7 @@ public class HelloController implements Initializable {
         imageView.fitHeightProperty().bind(rootPane.heightProperty());
         imageView.fitWidthProperty().bind(rootPane.widthProperty());
         imageView.preserveRatioProperty();
-
+        getAllFonts.getList();
 
         rootPane.getChildren().add(imageView);
         String imageInView = imageView.getImage().toString();
@@ -45,6 +47,7 @@ public class HelloController implements Initializable {
         Font font = Font.font("Yu Gothic Light", FontWeight.BOLD, 18);
         btn1.setFont(font);
         btn1.setPadding(new Insets(10, 10, 10, 10));
+
 
         rootPane.getChildren().add(btn1);
 
