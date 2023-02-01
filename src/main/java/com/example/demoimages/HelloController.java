@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
@@ -47,19 +48,22 @@ public class HelloController implements Initializable {
         ComboBox<String> comboBox = new ComboBox<>();
 
         comboBox.getItems().addAll(allFontsArray);
-
-
+        comboBox.setPadding(new Insets(5, 5, 5, 5));
+        HBox hBox = new HBox();
+        hBox.setPadding(new Insets(10,10,10,10));
+        hBox.setSpacing(10);
+        hBox.getChildren().add(comboBox);
         rootPane.getChildren().add(imageView);
-        rootPane.getChildren().add(comboBox);
+
         String imageInView = imageView.getImage().toString();
 
         Button btn1 = new Button("Boing!");
         Font font = Font.font("Yu Gothic Light", FontWeight.BOLD, 18);
         btn1.setFont(font);
         btn1.setPadding(new Insets(10, 10, 10, 10));
+        hBox.getChildren().add(btn1);
+        rootPane.getChildren().add(hBox);
 
-
-        rootPane.getChildren().add(btn1);
 
 
         imageName = "fullbin.jpg";
